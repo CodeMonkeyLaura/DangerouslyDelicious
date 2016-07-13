@@ -8,23 +8,24 @@ using Android.OS;
 
 namespace DangerouslyDelicious
 {
-    [Activity(Label = "DangerouslyDelicious", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Dangerously Delicious", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        int count = 1;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            var useCurrentButton = FindViewById<Button>(Resource.Id.useCurrentButton);
+            var searchLocationButton = FindViewById<Button>(Resource.Id.searchLocationButton);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            searchLocationButton.Click += delegate
+            {
+                var intent = new Intent(this, typeof(SearchYelpActivity));
+
+                StartActivity(intent);
+            };
         }
     }
 }
