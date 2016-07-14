@@ -23,6 +23,38 @@ namespace DangerouslyDelicious
             var searchYelpButton = FindViewById<Button>(Resource.Id.searchYelpButton);
             var restaurantSearchBox = FindViewById<EditText>(Resource.Id.restaurantSearchBox);
 
+            searchYelpButton.Click += async (sender, e) =>
+            {
+                string url = @"https://api.yelp.com/v2/search/?term=" + restaurantSearchBox.Text + @"&location=Louisville, KY";
+
+                //var searchResult = await GetSearchAsync(url);
+
+                //var tempAlert = new AlertDialog.Builder(this);
+                //tempAlert.SetMessage(searchResult.ToString());
+
+                //tempAlert.SetNeutralButton("OK", delegate { });
+
+                //tempAlert.Show();
+            };
         }
+
+        //private async Task<JsonValue> GetSearchAsync(string url)
+        //{
+        //    //var request = WebRequest.Create(new Uri(url));
+        //    //request.ContentType = "application/json";
+        //    //request.Method = "GET";
+
+        //    var request = new RestRequest(new Uri(url), Method.GET);
+
+        //    using (WebResponse response = await request.GetResponseAsync())
+        //    {
+        //        using (Stream stream = response.GetResponseStream())
+        //        {
+        //            var searchResultString = await Task.Run(() => JsonValue.Load(stream));
+
+        //            return searchResultString;
+        //        }
+        //    }
+        //}
     }
 }
