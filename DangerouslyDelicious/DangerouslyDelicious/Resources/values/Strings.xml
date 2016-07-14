@@ -2,5 +2,6 @@
 <resources>
     <string name="useCurrent">Use Current Location</string>
     <string name="searchLocation">Search for a Restaurant</string>
+    <string name="searchYelp">Search</string>
     <string name="ApplicationName">DangerouslyDelicious</string>
 </resources>

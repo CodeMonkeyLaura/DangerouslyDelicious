@@ -1,14 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+using System.IO;
+using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+using System.Json;
+using System.Net;
+using RestSharp.Portable;
+using Xamarin.Auth;
 
 namespace DangerouslyDelicious
 {
@@ -21,7 +20,9 @@ namespace DangerouslyDelicious
 
             SetContentView(Resource.Layout.SearchYelp);
 
-            // Create your application here
+            var searchYelpButton = FindViewById<Button>(Resource.Id.searchYelpButton);
+            var restaurantSearchBox = FindViewById<EditText>(Resource.Id.restaurantSearchBox);
+
         }
     }
 }

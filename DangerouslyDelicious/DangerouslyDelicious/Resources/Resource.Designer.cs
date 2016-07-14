@@ -63,11 +63,17 @@ namespace DangerouslyDelicious
 			// aapt resource value: 0x7f050000
 			public const int homeHeader = 2131034112;
 			
+			// aapt resource value: 0x7f050004
+			public const int restaurantSearchBox = 2131034116;
+			
 			// aapt resource value: 0x7f050003
 			public const int searchHeader = 2131034115;
 			
 			// aapt resource value: 0x7f050002
 			public const int searchLocationButton = 2131034114;
+			
+			// aapt resource value: 0x7f050005
+			public const int searchYelpButton = 2131034117;
 			
 			// aapt resource value: 0x7f050001
 			public const int useCurrentButton = 2131034113;
@@ -104,11 +110,14 @@ namespace DangerouslyDelicious
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040002
-			public const int ApplicationName = 2130968578;
+			// aapt resource value: 0x7f040003
+			public const int ApplicationName = 2130968579;
 			
 			// aapt resource value: 0x7f040001
 			public const int searchLocation = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int searchYelp = 2130968578;
 			
 			// aapt resource value: 0x7f040000
 			public const int useCurrent = 2130968576;
