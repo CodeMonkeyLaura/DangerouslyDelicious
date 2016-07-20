@@ -1,19 +1,24 @@
 using System;
-using System.IO;
-using System.Threading.Tasks;
+using System.Json;
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using System.Json;
 using System.Net;
-using RestSharp.Portable;
-using Xamarin.Auth;
+using System.Threading.Tasks;
+using SimpleOAuth;
+using SimpleOAuthXamarin;
+
 
 namespace DangerouslyDelicious
 {
     [Activity(Label = "Search")]
     public class SearchYelpActivity : Activity
     {
+        private readonly string _consumerKey = "xxxxxxx";
+        private readonly string _consumerSecret = "xxxxxxx";
+        private readonly string _token = "xxxxxxx";
+        private readonly string _tokenSecret = "xxxxxxx";
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -25,36 +30,37 @@ namespace DangerouslyDelicious
 
             searchYelpButton.Click += async (sender, e) =>
             {
-                string url = @"https://api.yelp.com/v2/search/?term=" + restaurantSearchBox.Text + @"&location=Louisville, KY";
+                var searchString = @"https://api.yelp.com/v2/search?term=" + restaurantSearchBox.Text +
+                       @"&location=Louisville, KY";
 
-                //var searchResult = await GetSearchAsync(url);
-
-                //var tempAlert = new AlertDialog.Builder(this);
-                //tempAlert.SetMessage(searchResult.ToString());
-
-                //tempAlert.SetNeutralButton("OK", delegate { });
-
-                //tempAlert.Show();
-            };
+                var restaurantList = await GetSearchResults(searchString);
+            }; 
         }
 
-        //private async Task<JsonValue> GetSearchAsync(string url)
-        //{
-        //    //var request = WebRequest.Create(new Uri(url));
-        //    //request.ContentType = "application/json";
-        //    //request.Method = "GET";
+        private async Task<JsonValue> GetSearchResults(string url)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(new Uri(url));
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.SignRequest(
+                new Tokens
+                {
+                    AccessToken = _token,
+                    AccessTokenSecret = _tokenSecret,
+                    ConsumerKey = _consumerKey,
+                    ConsumerSecret = _consumerSecret
+                }
+            ).WithEncryption(EncryptionMethod.HMACSHA1).InHeader();
 
-        //    var request = new RestRequest(new Uri(url), Method.GET);
+            using (var response = await request.GetResponseAsync())
+            {
+                using (var stream = response.GetResponseStream())
+                {
+                    var returnData = await Task.Run((() => JsonObject.Load(stream)));
 
-        //    using (WebResponse response = await request.GetResponseAsync())
-        //    {
-        //        using (Stream stream = response.GetResponseStream())
-        //        {
-        //            var searchResultString = await Task.Run(() => JsonValue.Load(stream));
-
-        //            return searchResultString;
-        //        }
-        //    }
-        //}
+                    return returnData;
+                }
+            }
+        }
     }
 }
