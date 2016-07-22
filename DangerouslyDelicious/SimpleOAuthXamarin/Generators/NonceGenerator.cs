@@ -1,11 +1,10 @@
-﻿// Simple OAuth .Net
+// Simple OAuth .Net
 // (c) 2012 Daniel McKenzie
 // Simple OAuth .Net may be freely distributed under the MIT license.
 
 using System;
-using SimpleOAuthXamarin.Generators;
 
-namespace SimpleOAuth.Generators
+namespace SimpleOAuthXamarin.Generators
 {
     /// <summary>
     /// Generates an NOnce token, or a token that should only be used once... ever.

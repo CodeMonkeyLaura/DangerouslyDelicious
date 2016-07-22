@@ -1,4 +1,4 @@
-﻿// Simple OAuth .Net
+// Simple OAuth .Net
 // (c) 2012 Daniel McKenzie
 // Simple OAuth .Net may be freely distributed under the MIT license.
 
@@ -6,7 +6,7 @@ using System.ComponentModel;
 using SimpleOAuthXamarin.Generators;
 using SimpleOAuthXamarin.Internal;
 
-namespace SimpleOAuth
+namespace SimpleOAuthXamarin
 {
     /// <summary>
     /// The types of Encryption that can be performed to generate an oauth_signature.

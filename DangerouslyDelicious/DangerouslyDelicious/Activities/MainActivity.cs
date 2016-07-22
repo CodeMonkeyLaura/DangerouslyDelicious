@@ -1,14 +1,11 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Widget;
 
-namespace DangerouslyDelicious
+namespace DangerouslyDelicious.Activities
 {
-    [Activity(Label = "Dangerously Delicious", MainLauncher = true)]
+    [Activity(Label = "Dangerously Delicious", MainLauncher = true, Icon = "@drawable/AppleWormIcon")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

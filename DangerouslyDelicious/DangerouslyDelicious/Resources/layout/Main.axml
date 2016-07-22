@@ -3,17 +3,29 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:id="@+id/searchResultSpace1" />
     <TextView
         android:text="I want to eat dangerously!"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/homeHeader" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:id="@+id/mainSpace2" />
     <Button
         android:id="@+id/useCurrentButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/useCurrent" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:id="@+id/mainSpace3" />
     <Button
         android:text="@string/searchLocation"
         android:layout_width="match_parent"

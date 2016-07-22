@@ -1,24 +1,20 @@
 using System;
 using System.Json;
-using Android.App;
-using Android.OS;
-using Android.Widget;
 using System.Net;
 using System.Threading.Tasks;
-using SimpleOAuth;
-using SimpleOAuthXamarin;
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Widget;
+using DangerouslyDelicious.SimpleOAuthXamarin;
+using DangerouslyDelicious.Utilities;
+using Newtonsoft.Json;
 
-
-namespace DangerouslyDelicious
+namespace DangerouslyDelicious.Activities
 {
-    [Activity(Label = "Search")]
+    [Activity(Label = "Dangerously Delicious", Icon = "@drawable/AppleWormIcon")]
     public class SearchYelpActivity : Activity
     {
-        private readonly string _consumerKey = "xxxxxxx";
-        private readonly string _consumerSecret = "xxxxxxx";
-        private readonly string _token = "xxxxxxx";
-        private readonly string _tokenSecret = "xxxxxxx";
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -34,6 +30,12 @@ namespace DangerouslyDelicious
                        @"&location=Louisville, KY";
 
                 var restaurantList = await GetSearchResults(searchString);
+
+                var restaurantListParsed = ParseYelpJson.MakeDto(restaurantList);
+
+                var intent = new Intent(this, typeof(YelpSearchResultActivity));
+                intent.PutExtra("restaurantList", JsonConvert.SerializeObject(restaurantListParsed));
+                StartActivity(intent);
             }; 
         }
 
@@ -42,13 +44,16 @@ namespace DangerouslyDelicious
             var request = (HttpWebRequest)WebRequest.Create(new Uri(url));
             request.Method = "GET";
             request.ContentType = "application/json";
+
+            var signingInfo = new YelpToken();
+
             request.SignRequest(
                 new Tokens
                 {
-                    AccessToken = _token,
-                    AccessTokenSecret = _tokenSecret,
-                    ConsumerKey = _consumerKey,
-                    ConsumerSecret = _consumerSecret
+                    AccessToken = signingInfo.Token,
+                    AccessTokenSecret = signingInfo.TokenSecret,
+                    ConsumerKey = signingInfo.ConsumerKey,
+                    ConsumerSecret = signingInfo.ConsumerSecret
                 }
             ).WithEncryption(EncryptionMethod.HMACSHA1).InHeader();
 
@@ -56,11 +61,12 @@ namespace DangerouslyDelicious
             {
                 using (var stream = response.GetResponseStream())
                 {
-                    var returnData = await Task.Run((() => JsonObject.Load(stream)));
+                    var returnData = await Task.Run((() => JsonValue.Load(stream)));
 
                     return returnData;
                 }
             }
         }
+
     }
 }

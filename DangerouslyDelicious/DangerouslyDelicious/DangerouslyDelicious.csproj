@@ -79,18 +79,41 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="Dtos\YelpListingDto.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchYelpActivity.cs" />
+    <Compile Include="Adapters\SearchListAdapter.cs" />
+    <Compile Include="Activities\SearchYelpActivity.cs" />
+    <Compile Include="Utilities\ParseYelpJson.cs" />
+    <Compile Include="SimpleOAuthXamarin\Enum.cs" />
+    <Compile Include="SimpleOAuthXamarin\Extensions.cs" />
+    <Compile Include="SimpleOAuthXamarin\Generators\HmacSha1Generator.cs" />
+    <Compile Include="SimpleOAuthXamarin\Generators\IGenerator.cs" />
+    <Compile Include="SimpleOAuthXamarin\Generators\ISignatureGenerator.cs" />
+    <Compile Include="SimpleOAuthXamarin\Generators\NonceGenerator.cs" />
+    <Compile Include="SimpleOAuthXamarin\Generators\TimestampGenerator.cs" />
+    <Compile Include="SimpleOAuthXamarin\Internal\AttributeExtensions.cs" />
+    <Compile Include="SimpleOAuthXamarin\Internal\SignatureMethod.cs" />
+    <Compile Include="SimpleOAuthXamarin\Internal\SignatureTypeAttribute.cs" />
+    <Compile Include="SimpleOAuthXamarin\OAuthRequestWrapper.cs" />
+    <Compile Include="SimpleOAuthXamarin\Tokens.cs" />
+    <Compile Include="SimpleOAuthXamarin\Utilities\UrlHelper.cs" />
+    <Compile Include="Activities\YelpSearchResultActivity.cs" />
+    <Compile Include="YelpToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\SearchYelp.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\YelpSearchResult.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SearchList.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -109,10 +132,19 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpleOAuthXamarin\SimpleOAuthXamarin.csproj">
-      <Project>{51545b06-e386-4d30-8faf-ca7f50d92341}</Project>
-      <Name>SimpleOAuthXamarin</Name>
-    </ProjectReference>
+    <AndroidResource Include="Resources\drawable\mdpi_yelp_powered_btn_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\back_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_arrow_back_white_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimpleOAuthXamarin\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\AppleWormIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

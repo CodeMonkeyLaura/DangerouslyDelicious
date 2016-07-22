@@ -1,4 +1,4 @@
-﻿// Simple OAuth .Net
+// Simple OAuth .Net
 // (c) 2012 Daniel McKenzie
 // Simple OAuth .Net may be freely distributed under the MIT license.
 
