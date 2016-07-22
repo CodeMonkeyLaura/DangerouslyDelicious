@@ -6,29 +6,25 @@
     <Space
         android:layout_width="wrap_content"
         android:layout_height="5dp"
-        android:id="@+id/searchResultSpace1" />
+        android:id="@+id/searchSpace1" />
     <TextView
-        android:text="I want to eat dangerously!"
+        android:text="Pick your poison!"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/homeHeader" />
+        android:id="@+id/searchHeader" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurantSearchBox"
+        android:hint="Search by restaurant name or type." />
     <Space
         android:layout_width="wrap_content"
         android:layout_height="10dp"
-        android:id="@+id/mainSpace2" />
+        android:id="@+id/searchSpace2" />
     <Button
-        android:id="@+id/useCurrentButton"
+        android:text="@string/searchYelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/useCurrent" />
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="5dp"
-        android:id="@+id/mainSpace3" />
-    <Button
-        android:text="@string/searchLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchLocationButton" />
+        android:id="@+id/searchYelpButton" />
 </LinearLayout>
