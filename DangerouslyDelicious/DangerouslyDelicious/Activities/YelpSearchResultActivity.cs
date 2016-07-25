@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using DangerouslyDelicious.Adapters;
@@ -11,6 +13,9 @@ namespace DangerouslyDelicious.Activities
     [Activity(Label = "Dangerously Delicious", Icon = "@drawable/AppleWormIcon")]
     public class YelpSearchResultActivity : Activity
     {
+        private SearchListAdapter listAdapter;
+        private ListView listView;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -23,8 +28,10 @@ namespace DangerouslyDelicious.Activities
 
             var restaurantsJson = JsonConvert.DeserializeObject<List<YelpListingDto>>(restaurants);
 
-            var listView = FindViewById<ListView>(Resource.Id.yelpSearchResultList);
-            listView.Adapter = new SearchListAdapter(this, restaurantsJson);
+            listView = FindViewById<ListView>(Resource.Id.yelpSearchResultList);
+
+            listAdapter = new SearchListAdapter(this, restaurantsJson);
+            listView.Adapter = listAdapter;
 
             var backButton = FindViewById<ImageButton>(Resource.Id.returnToSearchButton);
 
@@ -37,6 +44,18 @@ namespace DangerouslyDelicious.Activities
 
                 //StartActivity(intent);
             };
+
+            listView.ItemClick += (sender, e) =>
+            {
+                var restaurant = restaurantsJson[e.Position];
+
+                var intent = new Intent(this, typeof(RatingsViolationsComparisonActivity));
+                intent.PutExtra("restaurant", JsonConvert.SerializeObject(restaurant));
+                StartActivity(intent);
+
+                //Toast.MakeText(this, restaurant.Id, ToastLength.Short).Show();
+            };
+
         }
     }
 }
