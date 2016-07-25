@@ -5,6 +5,7 @@ using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 using DangerouslyDelicious.Dtos;
+using DangerouslyDelicious.Utilities;
 
 namespace DangerouslyDelicious.Adapters
 {
@@ -42,20 +43,9 @@ namespace DangerouslyDelicious.Adapters
             view.FindViewById<TextView>(Resource.Id.searchRestaurantName).Text = item.Name;
             view.FindViewById<TextView>(Resource.Id.searchRestaurantAddress).Text = item.Address;
             view.FindViewById<TextView>(Resource.Id.searchNumberReviews).Text = $"{item.NumberReviews} Reviews";
-            view.FindViewById<ImageView>(Resource.Id.searchYelpStars).SetImageBitmap(GetRatingStars(item.RatingImage));
+            view.FindViewById<ImageView>(Resource.Id.searchYelpStars).SetImageBitmap(MakeBitmap.GetRatingStars(item.RatingImage));
 
             return view;
-        }
-
-        private Bitmap GetRatingStars(string url)
-        {
-            using (var client = new WebClient())
-            {
-                var imageRaw = client.DownloadData(url);
-                var image = BitmapFactory.DecodeByteArray(imageRaw,0, imageRaw.Length);
-
-                return image;
-            }
         }
     }
 }

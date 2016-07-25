@@ -79,12 +79,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\RatingsViolationsComparisonActivity.cs" />
     <Compile Include="Dtos\YelpListingDto.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adapters\SearchListAdapter.cs" />
     <Compile Include="Activities\SearchYelpActivity.cs" />
+    <Compile Include="Utilities\MakeBitmap.cs" />
     <Compile Include="Utilities\ParseYelpJson.cs" />
     <Compile Include="SimpleOAuthXamarin\Enum.cs" />
     <Compile Include="SimpleOAuthXamarin\Extensions.cs" />
@@ -141,10 +143,19 @@
     <AndroidResource Include="Resources\drawable\ic_arrow_back_white_24dp.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\layout\RatingsViolationsComparison.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <None Include="SimpleOAuthXamarin\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\AppleWormIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\SkullIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\yelp_review_btn_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
