@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="visible"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:id="@+id/loadingSearchResults" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sending out the homing pigeons...."
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:id="@+id/loadingSearchText" />
+</LinearLayout>

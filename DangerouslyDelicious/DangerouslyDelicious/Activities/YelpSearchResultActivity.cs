@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Android.App;
 using Android.Content;
@@ -13,8 +12,8 @@ namespace DangerouslyDelicious.Activities
     [Activity(Label = "Dangerously Delicious", Icon = "@drawable/AppleWormIcon")]
     public class YelpSearchResultActivity : Activity
     {
-        private SearchListAdapter listAdapter;
-        private ListView listView;
+        private SearchListAdapter _listAdapter;
+        private ListView _listView;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -22,38 +21,47 @@ namespace DangerouslyDelicious.Activities
             SetContentView(Resource.Layout.YelpSearchResult);
 
             var restaurants = Intent.Extras.GetString("restaurantList") ?? "blank";
+            var restaurantsJson = new List<YelpListingDto>();
 
-            //Need to add handling for no results found
-            //var restaurantList = new List<YelpListingDto>();
+            if (restaurants != "blank")
+            {
+                restaurantsJson = JsonConvert.DeserializeObject<List<YelpListingDto>>(restaurants);
+            }
 
-            var restaurantsJson = JsonConvert.DeserializeObject<List<YelpListingDto>>(restaurants);
+            var searchHeader = Intent.Extras.GetString("searchResultHeader") ?? "No results found!";
 
-            listView = FindViewById<ListView>(Resource.Id.yelpSearchResultList);
+            if (restaurantsJson.Count == 0)
+            {
+                searchHeader = "No results found!";
+            }
 
-            listAdapter = new SearchListAdapter(this, restaurantsJson);
-            listView.Adapter = listAdapter;
+            FindViewById<TextView>(Resource.Id.searchResultHeader).Text = searchHeader;
+
+            _listView = FindViewById<ListView>(Resource.Id.yelpSearchResultList);
+            _listAdapter = new SearchListAdapter(this, restaurantsJson);
+            _listView.Adapter = _listAdapter;
 
             var backButton = FindViewById<ImageButton>(Resource.Id.returnToSearchButton);
 
             backButton.Click += (sender, e) =>
             {
-                //leaving both options here until we decide which to use
-                OnBackPressed();
-
-                //var intent = new Intent(this, typeof(SearchYelpActivity));
-
-                //StartActivity(intent);
+                if (!searchHeader.StartsWith("Search"))
+                {
+                    StartActivity(typeof(MainActivity));
+                }
+                else
+                {
+                    OnBackPressed();
+                }
             };
 
-            listView.ItemClick += (sender, e) =>
+            _listView.ItemClick += (sender, e) =>
             {
                 var restaurant = restaurantsJson[e.Position];
 
                 var intent = new Intent(this, typeof(RatingsViolationsComparisonActivity));
                 intent.PutExtra("restaurant", JsonConvert.SerializeObject(restaurant));
                 StartActivity(intent);
-
-                //Toast.MakeText(this, restaurant.Id, ToastLength.Short).Show();
             };
 
         }
