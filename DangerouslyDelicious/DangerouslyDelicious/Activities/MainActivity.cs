@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Widget;
 
@@ -17,11 +16,14 @@ namespace DangerouslyDelicious.Activities
             var useCurrentButton = FindViewById<Button>(Resource.Id.useCurrentButton);
             var searchLocationButton = FindViewById<Button>(Resource.Id.searchLocationButton);
 
-            searchLocationButton.Click += delegate
+            searchLocationButton.Click += (sender, e) =>
             {
-                var intent = new Intent(this, typeof(SearchYelpActivity));
+                StartActivity(typeof(SearchYelpActivity));
+            };
 
-                StartActivity(intent);
+            useCurrentButton.Click += (sender, e) =>
+            { 
+                StartActivity(typeof(FindByLocationActivity));
             };
         }
     }
