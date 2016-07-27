@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DangerouslyDelicious", "DangerouslyDelicious\DangerouslyDelicious.csproj", "{6D8030B8-FC8E-4FD9-97E1-E3E89C8766FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DangerouslyDelicious.Tests", "DangerouslyDelicious.Tests\DangerouslyDelicious.Tests.csproj", "{7AF2DF65-1599-4B1E-A850-05F7F539259E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,10 +17,6 @@ Global
 		{6D8030B8-FC8E-4FD9-97E1-E3E89C8766FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D8030B8-FC8E-4FD9-97E1-E3E89C8766FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6D8030B8-FC8E-4FD9-97E1-E3E89C8766FE}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{7AF2DF65-1599-4B1E-A850-05F7F539259E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AF2DF65-1599-4B1E-A850-05F7F539259E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AF2DF65-1599-4B1E-A850-05F7F539259E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AF2DF65-1599-4B1E-A850-05F7F539259E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
