@@ -80,12 +80,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\RatingsViolationsComparisonActivity.cs" />
+    <Compile Include="Dtos\RestaurantInspectionDto.cs" />
     <Compile Include="Dtos\YelpListingDto.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adapters\SearchListAdapter.cs" />
     <Compile Include="Activities\SearchYelpActivity.cs" />
+    <Compile Include="Services\RestaurantInspectionService.cs" />
     <Compile Include="Utilities\MakeBitmap.cs" />
     <Compile Include="Utilities\ParseYelpJson.cs" />
     <Compile Include="SimpleOAuthXamarin\Enum.cs" />
