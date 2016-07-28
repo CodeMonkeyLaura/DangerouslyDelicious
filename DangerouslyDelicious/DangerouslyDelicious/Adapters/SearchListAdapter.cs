@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Net;
 using Android.App;
-using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 using DangerouslyDelicious.Dtos;

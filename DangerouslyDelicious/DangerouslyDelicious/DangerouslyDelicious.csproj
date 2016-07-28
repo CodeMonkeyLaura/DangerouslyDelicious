@@ -57,6 +57,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Refractored.GifImageView, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Refractored.GifImageView.2.0.0\lib\monoandroid\Refractored.GifImageView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Json" />
@@ -79,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\FindByLocationActivity.cs" />
     <Compile Include="Activities\RatingsViolationsComparisonActivity.cs" />
     <Compile Include="Dtos\RestaurantInspectionDto.cs" />
     <Compile Include="Dtos\YelpListingDto.cs" />
@@ -88,6 +93,7 @@
     <Compile Include="Adapters\SearchListAdapter.cs" />
     <Compile Include="Activities\SearchYelpActivity.cs" />
     <Compile Include="Services\RestaurantInspectionService.cs" />
+    <Compile Include="Utilities\CleanInputString.cs" />
     <Compile Include="Utilities\MakeBitmap.cs" />
     <Compile Include="Utilities\ParseYelpJson.cs" />
     <Compile Include="SimpleOAuthXamarin\Enum.cs" />
@@ -104,6 +110,7 @@
     <Compile Include="SimpleOAuthXamarin\Tokens.cs" />
     <Compile Include="SimpleOAuthXamarin\Utilities\UrlHelper.cs" />
     <Compile Include="Activities\YelpSearchResultActivity.cs" />
+    <Compile Include="Utilities\PerformYelpSearch.cs" />
     <Compile Include="YelpToken.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +118,7 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\drawable\fork.png" />
     <AndroidResource Include="Resources\layout\SearchYelp.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -127,7 +135,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
@@ -139,13 +149,13 @@
     <AndroidResource Include="Resources\drawable\mdpi_yelp_powered_btn_light.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\back_arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_arrow_back_white_24dp.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\RatingsViolationsComparison.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\FindByLocation.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="SimpleOAuthXamarin\LICENSE.txt" />
@@ -158,6 +168,17 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\yelp_review_btn_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\theme.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\knife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Radar.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

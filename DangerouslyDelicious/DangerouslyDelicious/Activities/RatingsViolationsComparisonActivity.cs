@@ -19,22 +19,18 @@ namespace DangerouslyDelicious.Activities
             SetContentView(Resource.Layout.RatingsViolationsComparison);
 
             var restaurantToParse = Intent.Extras.GetString("restaurant") ?? "blank";
-            var restaurant = JsonConvert.DeserializeObject<YelpListingDto>(restaurantToParse);
+            var restaurant = new YelpListingDto();
 
-            var restaurantName = FindViewById<TextView>(Resource.Id.comparisonRestaurantName);
-            restaurantName.Text = restaurant.Name;
+            if (restaurantToParse != "blank")
+            {
+                restaurant = JsonConvert.DeserializeObject<YelpListingDto>(restaurantToParse);
+            }
 
-            var restaurantAddress = FindViewById<TextView>(Resource.Id.comparisonRestaurantAddress);
-            restaurantAddress.Text = restaurant.Address;
-
-            var yelpStarsImage = FindViewById<ImageView>(Resource.Id.comparisonYelpStars);
-            yelpStarsImage.SetImageBitmap(MakeBitmap.GetRatingStars(restaurant.RatingImage));
-
-            var yelpStarsNumber = FindViewById<TextView>(Resource.Id.comparisonNumberStars);
-            yelpStarsNumber.Text = $"{restaurant.Rating} Stars";
-
-            var yelpRatings = FindViewById<TextView>(Resource.Id.comparisonNumberReviews);
-            yelpRatings.Text = $"{restaurant.NumberReviews} Ratings";
+            FindViewById<TextView>(Resource.Id.comparisonRestaurantName).Text = restaurant.Name;
+            FindViewById<TextView>(Resource.Id.comparisonRestaurantAddress).Text = restaurant.Address;
+            FindViewById<ImageView>(Resource.Id.comparisonYelpStars).SetImageBitmap(MakeBitmap.GetRatingStars(restaurant.RatingImage));
+            FindViewById<TextView>(Resource.Id.comparisonNumberStars).Text = $"{restaurant.Rating} Stars";
+            FindViewById<TextView>(Resource.Id.comparisonNumberReviews).Text = $"{restaurant.NumberReviews} Ratings";
 
             #region Inspection Data
             // TODO: find a way to include "inspectionData" as a Bundle attached to the Intent that kicked off this activity

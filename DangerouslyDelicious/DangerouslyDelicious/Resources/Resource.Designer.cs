@@ -41,6 +41,25 @@ namespace DangerouslyDelicious
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int theme_custom_background = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int theme_devicedefault_background = 2131034113;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -48,7 +67,7 @@ namespace DangerouslyDelicious
 			public const int AppleWormIcon = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int back_arrow = 2130837505;
+			public const int fork = 2130837505;
 			
 			// aapt resource value: 0x7f020002
 			public const int ic_arrow_back_white_24dp = 2130837506;
@@ -57,13 +76,16 @@ namespace DangerouslyDelicious
 			public const int Icon = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int mdpi_yelp_powered_btn_light = 2130837508;
+			public const int knife = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int SkullIcon = 2130837509;
+			public const int mdpi_yelp_powered_btn_light = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int yelp_review_btn_light = 2130837510;
+			public const int SkullIcon = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int yelp_review_btn_light = 2130837511;
 			
 			static Drawable()
 			{
@@ -78,155 +100,167 @@ namespace DangerouslyDelicious
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f05000f
-			public const int comparisonDangerText = 2131034127;
+			// aapt resource value: 0x7f070012
+			public const int comparisonDangerText = 2131165202;
 			
-			// aapt resource value: 0x7f050013
-			public const int comparisonDeliciousText = 2131034131;
+			// aapt resource value: 0x7f070017
+			public const int comparisonDeliciousText = 2131165207;
 			
-			// aapt resource value: 0x7f050019
-			public const int comparisonNumberReviews = 2131034137;
+			// aapt resource value: 0x7f07001d
+			public const int comparisonNumberReviews = 2131165213;
 			
-			// aapt resource value: 0x7f050017
-			public const int comparisonNumberStars = 2131034135;
+			// aapt resource value: 0x7f07001b
+			public const int comparisonNumberStars = 2131165211;
 			
-			// aapt resource value: 0x7f05000a
-			public const int comparisonRestaurantAddress = 2131034122;
+			// aapt resource value: 0x7f07000c
+			public const int comparisonRestaurantAddress = 2131165196;
 			
-			// aapt resource value: 0x7f050009
-			public const int comparisonRestaurantName = 2131034121;
+			// aapt resource value: 0x7f07000b
+			public const int comparisonRestaurantName = 2131165195;
 			
-			// aapt resource value: 0x7f05000c
-			public const int comparisonSection = 2131034124;
+			// aapt resource value: 0x7f07000e
+			public const int comparisonSection = 2131165198;
 			
-			// aapt resource value: 0x7f050006
-			public const int comparisonSpace1 = 2131034118;
+			// aapt resource value: 0x7f070008
+			public const int comparisonSpace1 = 2131165192;
 			
-			// aapt resource value: 0x7f050008
-			public const int comparisonSpace2 = 2131034120;
+			// aapt resource value: 0x7f07000a
+			public const int comparisonSpace2 = 2131165194;
 			
-			// aapt resource value: 0x7f05000b
-			public const int comparisonSpace3 = 2131034123;
+			// aapt resource value: 0x7f07000d
+			public const int comparisonSpace3 = 2131165197;
 			
-			// aapt resource value: 0x7f050007
-			public const int comparisonSubheader = 2131034119;
+			// aapt resource value: 0x7f070009
+			public const int comparisonSubheader = 2131165193;
 			
-			// aapt resource value: 0x7f050010
-			public const int comparisonVerticalSpace = 2131034128;
+			// aapt resource value: 0x7f070013
+			public const int comparisonVerticalSpace = 2131165203;
 			
-			// aapt resource value: 0x7f050015
-			public const int comparisonYelpStars = 2131034133;
+			// aapt resource value: 0x7f070019
+			public const int comparisonYelpStars = 2131165209;
 			
-			// aapt resource value: 0x7f05000d
-			public const int dangerousColumn = 2131034125;
+			// aapt resource value: 0x7f070011
+			public const int dangerSpace1 = 2131165201;
 			
-			// aapt resource value: 0x7f05000e
-			public const int dangerousIcon = 2131034126;
+			// aapt resource value: 0x7f07000f
+			public const int dangerousColumn = 2131165199;
 			
-			// aapt resource value: 0x7f050011
-			public const int deliciousColumn = 2131034129;
+			// aapt resource value: 0x7f070010
+			public const int dangerousIcon = 2131165200;
 			
-			// aapt resource value: 0x7f050012
-			public const int deliciousIcon = 2131034130;
+			// aapt resource value: 0x7f070014
+			public const int deliciousColumn = 2131165204;
 			
-			// aapt resource value: 0x7f050014
-			public const int deliciousSpace1 = 2131034132;
+			// aapt resource value: 0x7f070015
+			public const int deliciousIcon = 2131165205;
 			
-			// aapt resource value: 0x7f050018
-			public const int deliciousSpace2 = 2131034136;
+			// aapt resource value: 0x7f070018
+			public const int deliciousSpace1 = 2131165208;
 			
-			// aapt resource value: 0x7f050016
-			public const int deliciousSpace2b = 2131034134;
+			// aapt resource value: 0x7f070016
+			public const int deliciousSpace1a = 2131165206;
 			
-			// aapt resource value: 0x7f05001a
-			public const int deliciousSpace3 = 2131034138;
+			// aapt resource value: 0x7f07001c
+			public const int deliciousSpace2 = 2131165212;
 			
-			// aapt resource value: 0x7f05001c
-			public const int deliciousSpace4 = 2131034140;
+			// aapt resource value: 0x7f07001a
+			public const int deliciousSpace2b = 2131165210;
 			
-			// aapt resource value: 0x7f05002d
-			public const int headerRow = 2131034157;
+			// aapt resource value: 0x7f07001e
+			public const int deliciousSpace3 = 2131165214;
 			
-			// aapt resource value: 0x7f050001
-			public const int homeHeader = 2131034113;
+			// aapt resource value: 0x7f070020
+			public const int deliciousSpace4 = 2131165216;
 			
-			// aapt resource value: 0x7f050002
-			public const int mainSpace2 = 2131034114;
+			// aapt resource value: 0x7f070000
+			public const int gifImageView = 2131165184;
 			
-			// aapt resource value: 0x7f050004
-			public const int mainSpace3 = 2131034116;
+			// aapt resource value: 0x7f070031
+			public const int headerRow = 2131165233;
 			
-			// aapt resource value: 0x7f050029
-			public const int navRow = 2131034153;
+			// aapt resource value: 0x7f070003
+			public const int homeHeader = 2131165187;
 			
-			// aapt resource value: 0x7f05001b
-			public const int readReviewsButton = 2131034139;
+			// aapt resource value: 0x7f070001
+			public const int loadingSearchText = 2131165185;
 			
-			// aapt resource value: 0x7f050026
-			public const int restaurantSearchBox = 2131034150;
+			// aapt resource value: 0x7f070004
+			public const int mainSpace2 = 2131165188;
 			
-			// aapt resource value: 0x7f05002a
-			public const int returnToSearchButton = 2131034154;
+			// aapt resource value: 0x7f070006
+			public const int mainSpace3 = 2131165190;
 			
-			// aapt resource value: 0x7f05002b
-			public const int returnToSearchText = 2131034155;
+			// aapt resource value: 0x7f07002d
+			public const int navRow = 2131165229;
 			
-			// aapt resource value: 0x7f050025
-			public const int searchHeader = 2131034149;
+			// aapt resource value: 0x7f07001f
+			public const int readReviewsButton = 2131165215;
 			
-			// aapt resource value: 0x7f050005
-			public const int searchLocationButton = 2131034117;
+			// aapt resource value: 0x7f07002a
+			public const int restaurantSearchBox = 2131165226;
 			
-			// aapt resource value: 0x7f050023
-			public const int searchNumberReviews = 2131034147;
+			// aapt resource value: 0x7f07002e
+			public const int returnToSearchButton = 2131165230;
 			
-			// aapt resource value: 0x7f050022
-			public const int searchRestaurantAddress = 2131034146;
+			// aapt resource value: 0x7f07002f
+			public const int returnToSearchText = 2131165231;
 			
-			// aapt resource value: 0x7f05001f
-			public const int searchRestaurantName = 2131034143;
+			// aapt resource value: 0x7f070029
+			public const int searchHeader = 2131165225;
 			
-			// aapt resource value: 0x7f05002e
-			public const int searchResultHeader = 2131034158;
+			// aapt resource value: 0x7f070007
+			public const int searchLocationButton = 2131165191;
 			
-			// aapt resource value: 0x7f05002c
-			public const int searchResultSpace = 2131034156;
+			// aapt resource value: 0x7f070027
+			public const int searchNumberReviews = 2131165223;
 			
-			// aapt resource value: 0x7f050000
-			public const int searchResultSpace1 = 2131034112;
+			// aapt resource value: 0x7f070026
+			public const int searchRestaurantAddress = 2131165222;
 			
-			// aapt resource value: 0x7f050030
-			public const int searchResultSpace2 = 2131034160;
+			// aapt resource value: 0x7f070023
+			public const int searchRestaurantName = 2131165219;
 			
-			// aapt resource value: 0x7f05001d
-			public const int searchRows = 2131034141;
+			// aapt resource value: 0x7f070032
+			public const int searchResultHeader = 2131165234;
 			
-			// aapt resource value: 0x7f050024
-			public const int searchSpace1 = 2131034148;
+			// aapt resource value: 0x7f070030
+			public const int searchResultSpace = 2131165232;
 			
-			// aapt resource value: 0x7f050027
-			public const int searchSpace2 = 2131034151;
+			// aapt resource value: 0x7f070002
+			public const int searchResultSpace1 = 2131165186;
 			
-			// aapt resource value: 0x7f05001e
-			public const int searchSubrow1 = 2131034142;
+			// aapt resource value: 0x7f070034
+			public const int searchResultSpace2 = 2131165236;
 			
-			// aapt resource value: 0x7f050021
-			public const int searchSubrow2 = 2131034145;
+			// aapt resource value: 0x7f070021
+			public const int searchRows = 2131165217;
 			
-			// aapt resource value: 0x7f050028
-			public const int searchYelpButton = 2131034152;
+			// aapt resource value: 0x7f070028
+			public const int searchSpace1 = 2131165224;
 			
-			// aapt resource value: 0x7f050020
-			public const int searchYelpStars = 2131034144;
+			// aapt resource value: 0x7f07002b
+			public const int searchSpace2 = 2131165227;
 			
-			// aapt resource value: 0x7f050003
-			public const int useCurrentButton = 2131034115;
+			// aapt resource value: 0x7f070022
+			public const int searchSubrow1 = 2131165218;
 			
-			// aapt resource value: 0x7f05002f
-			public const int yelpIcon = 2131034159;
+			// aapt resource value: 0x7f070025
+			public const int searchSubrow2 = 2131165221;
 			
-			// aapt resource value: 0x7f050031
-			public const int yelpSearchResultList = 2131034161;
+			// aapt resource value: 0x7f07002c
+			public const int searchYelpButton = 2131165228;
+			
+			// aapt resource value: 0x7f070024
+			public const int searchYelpStars = 2131165220;
+			
+			// aapt resource value: 0x7f070005
+			public const int useCurrentButton = 2131165189;
+			
+			// aapt resource value: 0x7f070033
+			public const int yelpIcon = 2131165235;
+			
+			// aapt resource value: 0x7f070035
+			public const int yelpSearchResultList = 2131165237;
 			
 			static Id()
 			{
@@ -242,19 +276,22 @@ namespace DangerouslyDelicious
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int FindByLocation = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int RatingsViolationsComparison = 2130903041;
+			public const int Main = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int SearchList = 2130903042;
+			public const int RatingsViolationsComparison = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int SearchYelp = 2130903043;
+			public const int SearchList = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int YelpSearchResult = 2130903044;
+			public const int SearchYelp = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int YelpSearchResult = 2130903045;
 			
 			static Layout()
 			{
@@ -290,6 +327,22 @@ namespace DangerouslyDelicious
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int DDCustomTheme = 2131099648;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}
