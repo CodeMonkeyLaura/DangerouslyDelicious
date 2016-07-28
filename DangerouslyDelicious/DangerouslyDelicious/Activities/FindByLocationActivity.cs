@@ -1,9 +1,11 @@
+using System.IO;
 using Android.App;
 using Android.Content;
 using Android.Locations;
 using Android.OS;
 using Android.Util;
 using DangerouslyDelicious.Utilities;
+using Felipecsl.GifImageViewLibrary;
 
 namespace DangerouslyDelicious.Activities
 {
@@ -18,6 +20,9 @@ namespace DangerouslyDelicious.Activities
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.FindByLocation);
+
+            var gifImageView = FindViewById<GifImageView>(Resource.Id.gifImageView);
+            StartGif("Radar.gif", gifImageView);
 
             _manager = (LocationManager)GetSystemService(LocationService);
 
@@ -39,6 +44,21 @@ namespace DangerouslyDelicious.Activities
             intent.PutExtra("restaurantList", (string)restaurantList);
             intent.PutExtra("searchResultHeader", "Nearest Restaurants to You");
             StartActivity(intent);
+        }
+
+        private void StartGif(string fileName, GifImageView viewName)
+        {
+            byte[] bytes;
+            Stream input = Assets.Open(fileName);
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                input.CopyTo(ms);
+                bytes = ms.ToArray();
+            }
+
+            viewName.SetBytes(bytes);
+            viewName.StartAnimation();
         }
 
         protected override void OnResume()

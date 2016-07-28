@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <Space
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="15dp"
         android:id="@+id/comparisonSpace1" />
     <TextView
         android:text="Is it worth the risk?"
@@ -18,13 +18,15 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:id="@+id/comparisonSpace2" />
-  <TextView
+    <TextView
+        android:text="Restaurant Name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:id="@+id/comparisonRestaurantName" />
     <TextView
+        android:text="Restaurant Address"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +34,7 @@
         android:id="@+id/comparisonRestaurantAddress" />
     <Space
         android:layout_width="match_parent"
-        android:layout_height="15dp"
+        android:layout_height="30dp"
         android:id="@+id/comparisonSpace3" />
     <LinearLayout
         android:orientation="horizontal"
@@ -46,11 +48,15 @@
             android:layout_weight="1"
             android:id="@+id/dangerousColumn">
             <ImageView
-                android:src="@drawable/SkullIcon"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:src="@drawable/knife"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/dangerousIcon" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:id="@+id/dangerSpace1" />
             <TextView
                 android:text="Danger"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -70,11 +76,15 @@
             android:layout_weight="1"
             android:id="@+id/deliciousColumn">
             <ImageView
-                android:src="@drawable/AppleWormIcon"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:src="@drawable/fork"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/deliciousIcon" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:id="@+id/deliciousSpace1a" />
             <TextView
                 android:text="Deliciousness"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -95,6 +105,7 @@
                 android:layout_height="5dp"
                 android:id="@+id/deliciousSpace2b" />
             <TextView
+                android:text="4 stars"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -104,6 +115,7 @@
                 android:layout_height="5dp"
                 android:id="@+id/deliciousSpace2" />
             <TextView
+                android:text="10 Reviews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -121,12 +133,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:id="@+id/deliciousSpace4" />
-          <ImageView
+            <ImageView
                 android:src="@drawable/yelp_review_btn_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"/>
-          
+                android:layout_gravity="center_horizontal" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

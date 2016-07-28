@@ -5,14 +5,13 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:visibility="visible"
-        android:paddingTop="20px"
-        android:paddingBottom="20px"
-        android:id="@+id/loadingSearchResults" />
+    <com.felipecsl.gifimageview.library.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:padding="50px"
+        android:layout_width="110dp"
+        android:layout_height="110dp" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Sending out the homing pigeons...."
