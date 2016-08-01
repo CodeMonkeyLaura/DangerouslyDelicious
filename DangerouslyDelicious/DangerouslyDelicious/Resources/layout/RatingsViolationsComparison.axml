@@ -6,9 +6,9 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="15dp"
-        android:id="@+id/comparisonSpace1" />
+        android:id="@+id/comparisonSpace0" />
     <TextView
-        android:text="Is it worth the risk?"
+        android:text="Time to decide!"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,16 +17,25 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="10dp"
+        android:id="@+id/comparisonSpace1" />
+    <TextView
+        android:text="Is it worth the risk?"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:id="@+id/comparisonSubheader" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
         android:id="@+id/comparisonSpace2" />
     <TextView
-        android:text="Restaurant Name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:id="@+id/comparisonRestaurantName" />
     <TextView
-        android:text="Restaurant Address"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,9 +57,9 @@
             android:layout_weight="1"
             android:id="@+id/dangerousColumn">
             <ImageView
-                android:src="@drawable/knife"
-                android:layout_width="150dp"
-                android:layout_height="30dp"
+                android:src="@drawable/badapple"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/dangerousIcon" />
             <Space
@@ -64,6 +73,38 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:id="@+id/comparisonDangerText" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:id="@+id/dangerSpace2" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:id="@+id/comparisonGrade" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:id="@+id/dangerSpace3" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:id="@+id/comparisonScore" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:id="@+id/dangerSpace4" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:id="@+id/comparisonInspectedOn" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:id="@+id/comparisonInspectionDate" />
         </LinearLayout>
         <Space
             android:layout_width="5dp"
@@ -76,9 +117,9 @@
             android:layout_weight="1"
             android:id="@+id/deliciousColumn">
             <ImageView
-                android:src="@drawable/fork"
-                android:layout_width="150dp"
-                android:layout_height="30dp"
+                android:src="@drawable/goodapple"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/deliciousIcon" />
             <Space
@@ -105,7 +146,6 @@
                 android:layout_height="5dp"
                 android:id="@+id/deliciousSpace2b" />
             <TextView
-                android:text="4 stars"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -115,7 +155,6 @@
                 android:layout_height="5dp"
                 android:id="@+id/deliciousSpace2" />
             <TextView
-                android:text="10 Reviews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -139,5 +178,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/resultFooterRow"
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent">
+        <Button
+            android:id="@+id/startOverButton"
+            android:layout_gravity="bottom"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Search Again?" />
     </LinearLayout>
 </LinearLayout>

@@ -5,14 +5,29 @@
     android:layout_height="match_parent">
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="5dp"
+        android:layout_height="20dp"
         android:id="@+id/searchSpace1" />
+    <ImageView
+        android:src="@drawable/AppleWormIcon"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_gravity="center"
+        android:id="@+id/searchScreenIcon" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:id="@+id/searchSpace1b" />
     <TextView
         android:text="Pick your poison!"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:id="@+id/searchHeader" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:id="@+id/searchSpace1a" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,4 +42,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchYelpButton" />
+    <LinearLayout
+        android:id="@+id/searchFooterRow"
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent">
+        <Button
+            android:id="@+id/backHomeButton"
+            android:layout_gravity="bottom"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Start Over" />
+    </LinearLayout>
 </LinearLayout>

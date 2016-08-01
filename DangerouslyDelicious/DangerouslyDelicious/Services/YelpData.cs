@@ -1,12 +1,23 @@
 using System.Collections.Generic;
 using System.Json;
+using System.Threading.Tasks;
 using DangerouslyDelicious.Dtos;
+using DangerouslyDelicious.Utilities;
+using Newtonsoft.Json;
 
-namespace DangerouslyDelicious.Utilities
+namespace DangerouslyDelicious.Services
 {
-    public class ParseYelpJson
+    public class YelpData
     {
-        public static List<YelpListingDto> MakeDto(JsonValue restaurantList)
+        public static async Task<JsonValue> PerformSearch(string url)
+        {
+            var searchResults = await HttpRequestSetup.MakeRequest(url, true);
+            var formattedResults = MakeYelpListingDto(searchResults);
+
+            return JsonConvert.SerializeObject(formattedResults);
+        }
+
+        private static List<YelpListingDto> MakeYelpListingDto(JsonValue restaurantList)
         {
             var yelpListingDtoList = new List<YelpListingDto>();
 

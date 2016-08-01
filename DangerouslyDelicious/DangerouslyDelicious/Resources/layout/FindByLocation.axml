@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <Space
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:id="@+id/locationSpace1" />
     <com.felipecsl.gifimageview.library.GifImageView
         android:id="@+id/gifImageView"
         android:layout_gravity="center"
@@ -12,6 +16,10 @@
         android:padding="50px"
         android:layout_width="110dp"
         android:layout_height="110dp" />
+    <Space
+      android:layout_height="10dp"
+      android:layout_width="match_parent"
+      android:id="@+id/locationSpace1" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Sending out the homing pigeons...."
