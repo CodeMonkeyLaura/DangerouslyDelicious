@@ -85,6 +85,7 @@
     <Compile Include="Dtos\RestaurantInspectionDto.cs" />
     <Compile Include="Dtos\YelpListingDto.cs" />
     <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Models\PhoneRequirements.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adapters\SearchListAdapter.cs" />

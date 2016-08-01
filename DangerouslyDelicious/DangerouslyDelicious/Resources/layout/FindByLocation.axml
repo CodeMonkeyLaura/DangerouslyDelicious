@@ -13,13 +13,13 @@
         android:id="@+id/gifImageView"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:padding="50px"
+        android:padding="25px"
         android:layout_width="110dp"
         android:layout_height="110dp" />
     <Space
-      android:layout_height="10dp"
-      android:layout_width="match_parent"
-      android:id="@+id/locationSpace1" />
+        android:layout_height="10dp"
+        android:layout_width="match_parent"
+        android:id="@+id/locationSpace1" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Sending out the homing pigeons...."
