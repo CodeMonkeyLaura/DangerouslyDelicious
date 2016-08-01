@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Net;
 using Android.App;
-using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 using DangerouslyDelicious.Dtos;
@@ -43,7 +41,7 @@ namespace DangerouslyDelicious.Adapters
             view.FindViewById<TextView>(Resource.Id.searchRestaurantName).Text = item.Name;
             view.FindViewById<TextView>(Resource.Id.searchRestaurantAddress).Text = item.Address;
             view.FindViewById<TextView>(Resource.Id.searchNumberReviews).Text = $"{item.NumberReviews} Reviews";
-            view.FindViewById<ImageView>(Resource.Id.searchYelpStars).SetImageBitmap(MakeBitmap.GetRatingStars(item.RatingImage));
+            view.FindViewById<ImageView>(Resource.Id.searchYelpStars).SetImageBitmap(BitmapDownloader.GetRatingStars(item.RatingImage));
 
             return view;
         }

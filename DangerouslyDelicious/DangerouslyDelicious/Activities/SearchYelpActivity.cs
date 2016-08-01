@@ -1,20 +1,19 @@
-using System;
-using System.Json;
-using System.Net;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Net;
 using Android.OS;
 using Android.Widget;
-using DangerouslyDelicious.SimpleOAuthXamarin;
+using DangerouslyDelicious.Models;
+using DangerouslyDelicious.Services;
 using DangerouslyDelicious.Utilities;
-using Newtonsoft.Json;
 
 namespace DangerouslyDelicious.Activities
 {
-    [Activity(Label = "Dangerously Delicious", Icon = "@drawable/AppleWormIcon")]
+    [Activity(Theme = "@android:style/Theme.NoTitleBar")]
     public class SearchYelpActivity : Activity
     {
+        private ConnectivityManager _connectivityManager;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -23,49 +22,59 @@ namespace DangerouslyDelicious.Activities
 
             var searchYelpButton = FindViewById<Button>(Resource.Id.searchYelpButton);
             var restaurantSearchBox = FindViewById<EditText>(Resource.Id.restaurantSearchBox);
+            var backHomeButton = FindViewById<Button>(Resource.Id.backHomeButton);
 
             searchYelpButton.Click += async (sender, e) =>
             {
-                var searchString = @"https://api.yelp.com/v2/search?term=" + restaurantSearchBox.Text +
-                       @"&location=Louisville, KY";
+                var reqs = CheckInternetRequirements();
 
-                var restaurantList = await GetSearchResults(searchString);
+                if (reqs.Internet)
+                {
+                    var searchString = @"https://api.yelp.com/v2/search?term=" +
+                                       InputStringFormatting.RemoveUnsafeCharacters(restaurantSearchBox.Text) +
+                                       @"&location=Louisville, KY";
 
-                var restaurantListParsed = ParseYelpJson.MakeDto(restaurantList);
+                    var restaurantList = await YelpData.PerformSearch(searchString);
 
-                var intent = new Intent(this, typeof(YelpSearchResultActivity));
-                intent.PutExtra("restaurantList", JsonConvert.SerializeObject(restaurantListParsed));
-                StartActivity(intent);
-            }; 
+                    var intent = new Intent(this, typeof(YelpSearchResultActivity));
+                    intent.PutExtra("restaurantList", (string) restaurantList);
+                    intent.PutExtra("searchResultHeader", "Search Results");
+                    StartActivity(intent);
+                }
+                else
+                {
+                    ShowAlert("Internet access must be enabled to use this feature.");
+                }
+            };
+
+            backHomeButton.Click += (sender, e) =>
+            {
+                StartActivity(typeof(MainActivity));
+            };
         }
 
-        private async Task<JsonValue> GetSearchResults(string url)
+        private PhoneRequirements CheckInternetRequirements()
         {
-            var request = (HttpWebRequest)WebRequest.Create(new Uri(url));
-            request.Method = "GET";
-            request.ContentType = "application/json";
+            _connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
 
-            var signingInfo = new YelpToken();
+            var internetAccess = _connectivityManager.ActiveNetworkInfo;
 
-            request.SignRequest(
-                new Tokens
-                {
-                    AccessToken = signingInfo.Token,
-                    AccessTokenSecret = signingInfo.TokenSecret,
-                    ConsumerKey = signingInfo.ConsumerKey,
-                    ConsumerSecret = signingInfo.ConsumerSecret
-                }
-            ).WithEncryption(EncryptionMethod.HMACSHA1).InHeader();
-
-            using (var response = await request.GetResponseAsync())
+            return new PhoneRequirements()
             {
-                using (var stream = response.GetResponseStream())
-                {
-                    var returnData = await Task.Run((() => JsonValue.Load(stream)));
+                Internet = internetAccess != null && internetAccess.IsConnected
+            };
+        }
 
-                    return returnData;
-                }
-            }
+        private void ShowAlert(string message)
+        {
+            var alert = new AlertDialog.Builder(this);
+            alert.Create();
+            alert.SetMessage(message);
+            alert.SetPositiveButton("Oops", delegate
+            {
+                StartActivity(typeof(MainActivity));
+            });
+            alert.Show();
         }
 
     }

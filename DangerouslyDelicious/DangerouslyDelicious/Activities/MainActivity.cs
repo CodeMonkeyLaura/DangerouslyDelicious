@@ -1,11 +1,10 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Widget;
 
 namespace DangerouslyDelicious.Activities
 {
-    [Activity(Label = "Dangerously Delicious", MainLauncher = true, Icon = "@drawable/AppleWormIcon")]
+    [Activity(MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
@@ -17,11 +16,14 @@ namespace DangerouslyDelicious.Activities
             var useCurrentButton = FindViewById<Button>(Resource.Id.useCurrentButton);
             var searchLocationButton = FindViewById<Button>(Resource.Id.searchLocationButton);
 
-            searchLocationButton.Click += delegate
+            searchLocationButton.Click += (sender, e) =>
             {
-                var intent = new Intent(this, typeof(SearchYelpActivity));
+                StartActivity(typeof(SearchYelpActivity));
+            };
 
-                StartActivity(intent);
+            useCurrentButton.Click += (sender, e) =>
+            { 
+                StartActivity(typeof(FindByLocationActivity));
             };
         }
     }
