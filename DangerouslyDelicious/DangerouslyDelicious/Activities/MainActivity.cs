@@ -4,7 +4,7 @@ using Android.Widget;
 
 namespace DangerouslyDelicious.Activities
 {
-    [Activity(Label = "Dangerously Delicious", MainLauncher = true, Icon = "@drawable/AppleWormIcon")]
+    [Activity(MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

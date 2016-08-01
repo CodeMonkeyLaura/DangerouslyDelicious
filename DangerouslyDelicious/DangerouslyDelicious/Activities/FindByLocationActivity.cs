@@ -4,12 +4,12 @@ using Android.Content;
 using Android.Locations;
 using Android.OS;
 using Android.Util;
-using DangerouslyDelicious.Utilities;
+using DangerouslyDelicious.Services;
 using Felipecsl.GifImageViewLibrary;
 
 namespace DangerouslyDelicious.Activities
 {
-    [Activity(Label="Dangerously Delicious", Icon = "@drawable/AppleWormIcon")]
+    [Activity(Theme = "@android:style/Theme.NoTitleBar")]
     public class FindByLocationActivity : Activity, ILocationListener
     {
         private static readonly string _tag = "SearchByLocationActivity";
@@ -38,7 +38,7 @@ namespace DangerouslyDelicious.Activities
         {
             var searchString = @"https://api.yelp.com/v2/search?term=food&ll=" + location.Latitude + "," + location.Longitude + @"&sort=1&limit=5";
 
-            var restaurantList = await PerformYelpSearch.FormatResults(searchString);
+            var restaurantList = await YelpData.PerformSearch(searchString);
 
             var intent = new Intent(this, typeof(YelpSearchResultActivity));
             intent.PutExtra("restaurantList", (string)restaurantList);

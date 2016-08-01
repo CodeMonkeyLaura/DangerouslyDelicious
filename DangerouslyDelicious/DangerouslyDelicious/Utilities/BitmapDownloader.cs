@@ -3,7 +3,7 @@ using Android.Graphics;
 
 namespace DangerouslyDelicious.Utilities
 {
-    public class MakeBitmap
+    public class BitmapDownloader
     {
         public static Bitmap GetRatingStars(string url)
         {

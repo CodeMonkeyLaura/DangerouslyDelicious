@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/searchResultTopSpace" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"

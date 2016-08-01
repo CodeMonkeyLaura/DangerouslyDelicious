@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace DangerouslyDelicious.Utilities
 {
-    public class CleanInputString
+    public class InputStringFormatting
     {
-        public static string RemoveBadCharacters(string searchString)
+        public static string RemoveUnsafeCharacters(string searchString)
         {
             var badList = new List<string> {";", "<", ">", "#", "+", "=", "[", "]"};
 
