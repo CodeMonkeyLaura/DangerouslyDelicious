@@ -69,7 +69,7 @@ namespace DangerouslyDelicious.Services
                         Name = establishment["PremiseName"],
                         StreetNumber = establishment["PermiseStreetNo"],
                         StreetName = establishment["PremiseStreet"],
-                        EstablishmentId = establishment["EstablishmentId"],
+                        EstablishmentId = establishment["EstablishmentID"],
                         Latitude = establishment["latitude"],
                         Longitude = establishment["longitude"]
                     };
@@ -106,7 +106,7 @@ namespace DangerouslyDelicious.Services
                 {
                     var locationFound = new RestaurantInspectionDto()
                     {
-                        EstablishmentId = establishment["EstablishmentId"],
+                        EstablishmentId = establishment["EstablishmentID"],
                         EstablishmentName = establishment["EstablishmentName"],
                         Grade = establishment["Grade"],
                         Score = establishment["Score"],

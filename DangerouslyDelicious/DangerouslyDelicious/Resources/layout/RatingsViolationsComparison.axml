@@ -4,22 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Space
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:id="@+id/comparisonSpace0" />
-    <TextView
-        android:text="Time to decide!"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/comparisonTopSpace" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:id="@+id/comparisonSubheader" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:id="@+id/comparisonSpace1" />
+        android:id="@+id/navRow">
+        <ImageButton
+            android:src="@drawable/ic_arrow_back_white_24dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/returnToListButton" />
+        <TextView
+            android:text="Return to Restaurant List"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:id="@+id/returnToListText" />
+    </LinearLayout>
     <TextView
-        android:text="Is it worth the risk?"
+        android:text="Time to decide: is it worth the risk?"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +36,7 @@
         android:id="@+id/comparisonSubheader" />
     <Space
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="15dp"
         android:id="@+id/comparisonSpace2" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -43,7 +52,7 @@
         android:id="@+id/comparisonRestaurantAddress" />
     <Space
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:id="@+id/comparisonSpace3" />
     <LinearLayout
         android:orientation="horizontal"

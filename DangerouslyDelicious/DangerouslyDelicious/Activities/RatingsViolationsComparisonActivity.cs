@@ -53,6 +53,7 @@ namespace DangerouslyDelicious.Activities
 
             var readReviewsButton = FindViewById<Button>(Resource.Id.readReviewsButton);
             var startOverButton = FindViewById<Button>(Resource.Id.startOverButton);
+            var returnToListButton = FindViewById<ImageButton>(Resource.Id.returnToListButton);
 
             readReviewsButton.Click += (sender, e) =>
             {
@@ -66,6 +67,11 @@ namespace DangerouslyDelicious.Activities
             startOverButton.Click += (sender, e) =>
             {
                 StartActivity(typeof(MainActivity));
+            };
+
+            returnToListButton.Click += (sender, e) =>
+            {
+                OnBackPressed();
             };
         }
 

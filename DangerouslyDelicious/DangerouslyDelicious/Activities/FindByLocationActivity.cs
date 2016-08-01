@@ -2,8 +2,10 @@ using System.IO;
 using Android.App;
 using Android.Content;
 using Android.Locations;
+using Android.Net;
 using Android.OS;
 using Android.Util;
+using DangerouslyDelicious.Models;
 using DangerouslyDelicious.Services;
 using Felipecsl.GifImageViewLibrary;
 
@@ -13,7 +15,8 @@ namespace DangerouslyDelicious.Activities
     public class FindByLocationActivity : Activity, ILocationListener
     {
         private static readonly string _tag = "SearchByLocationActivity";
-        private LocationManager _manager;
+        private LocationManager _locationManager;
+        private ConnectivityManager _connectivityManager;
         private string _locationProvider;
 
         protected override void OnCreate(Bundle bundle)
@@ -24,26 +27,26 @@ namespace DangerouslyDelicious.Activities
             var gifImageView = FindViewById<GifImageView>(Resource.Id.gifImageView);
             StartGif("Radar.gif", gifImageView);
 
-            _manager = (LocationManager)GetSystemService(LocationService);
+            var reqs = CheckLocationRequirements();
 
-            _locationProvider = _manager.IsProviderEnabled(LocationManager.NetworkProvider) ? LocationManager.NetworkProvider : LocationManager.PassiveProvider;
+            if (reqs.Network || reqs.Gps)
+            {
+                if (reqs.Internet)
+                {
+                    _locationProvider = reqs.Network ? LocationManager.NetworkProvider : LocationManager.GpsProvider;
+                    _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
 
-            _manager.RequestLocationUpdates(_locationProvider, 0, 0, this);
-
-            SearchYelp(_manager.GetLastKnownLocation(_locationProvider));
-
-        }
-
-        private async void SearchYelp(Location location)
-        {
-            var searchString = @"https://api.yelp.com/v2/search?term=food&ll=" + location.Latitude + "," + location.Longitude + @"&sort=1&limit=5";
-
-            var restaurantList = await YelpData.PerformSearch(searchString);
-
-            var intent = new Intent(this, typeof(YelpSearchResultActivity));
-            intent.PutExtra("restaurantList", (string)restaurantList);
-            intent.PutExtra("searchResultHeader", "Nearest Restaurants to You");
-            StartActivity(intent);
+                    SearchYelp(_locationManager.GetLastKnownLocation(_locationProvider));
+                }
+                else
+                {
+                    ShowAlert("Internet access must be enabled to use this feature.");
+                }
+            }
+            else
+            {
+                ShowAlert("Location services must be enabled to use this feature.");
+            }
         }
 
         private void StartGif(string fileName, GifImageView viewName)
@@ -61,6 +64,45 @@ namespace DangerouslyDelicious.Activities
             viewName.StartAnimation();
         }
 
+        private PhoneRequirements CheckLocationRequirements()
+        {
+            _locationManager = (LocationManager)GetSystemService(LocationService);
+            _connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+
+            var internetAccess = _connectivityManager.ActiveNetworkInfo;
+
+            return new PhoneRequirements()
+            {
+                Gps = _locationManager.IsProviderEnabled(LocationManager.GpsProvider),
+                Network = _locationManager.IsProviderEnabled(LocationManager.NetworkProvider),
+                Internet = internetAccess != null && internetAccess.IsConnected
+            };
+        }
+
+        private async void SearchYelp(Location location)
+        {
+            var searchString = @"https://api.yelp.com/v2/search?term=food&ll=" + location.Latitude + "," + location.Longitude + @"&sort=1&limit=5";
+
+            var restaurantList = await YelpData.PerformSearch(searchString);
+
+            var intent = new Intent(this, typeof(YelpSearchResultActivity));
+            intent.PutExtra("restaurantList", (string)restaurantList);
+            intent.PutExtra("searchResultHeader", "Nearest Restaurants to You");
+            StartActivity(intent);
+        }
+
+        private void ShowAlert(string message)
+        {
+            var alert = new AlertDialog.Builder(this);
+            alert.Create();
+            alert.SetMessage(message);
+            alert.SetPositiveButton("Oops", delegate
+            {
+                StartActivity(typeof(MainActivity));
+            });
+            alert.Show();
+        }
+
         protected override void OnResume()
         {
             base.OnResume();
@@ -70,7 +112,7 @@ namespace DangerouslyDelicious.Activities
         protected override void OnPause()
         {
             base.OnPause();
-            _manager.RemoveUpdates(this);
+            _locationManager.RemoveUpdates(this);
         }
 
         public void OnLocationChanged(Location location)
